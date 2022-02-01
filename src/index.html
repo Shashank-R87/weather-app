@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+	<svg class="draggable" xmlns="http://www.w3.org/2000/svg" width="930" height="20" viewBox="0 0 930 20">
+		<rect id="Rectangle_13" data-name="Rectangle 13" width="930" height="20" fill="#f5f5f5" />
+	</svg>
+	<img id="avatar" class="user_image">
+	<h1 class="hello">Hello,</h1>
+	<h2 id="user_name" class="name">User</h2>
+	<input id="search_input" type="text" class="search" placeholder="Location..">
+	<svg id="search" class="search_icon" id="Component_3_1" data-name="Component 3 – 1"
+		xmlns="http://www.w3.org/2000/svg" width="17.914" height="17.914" viewBox="0 0 17.914 17.914">
+		<g id="Ellipse_2" data-name="Ellipse 2" fill="none" stroke="#f97f29" stroke-width="2">
+			<ellipse cx="8.5" cy="8" rx="8.5" ry="8" stroke="none" />
+			<ellipse cx="8.5" cy="8" rx="7.5" ry="7" fill="none" />
+		</g>
+		<line id="Line_4" data-name="Line 4" x2="3" y2="3" transform="translate(13.5 13.5)" fill="none" stroke="#f97f29"
+			stroke-linecap="round" stroke-width="2" />
+	</svg>
+	<img src="resource/exit.svg" class="exit" id="exit">
+	<img src="./resource/Rectangle-1.png" class="bg1">
+	<img src="./resource/Rectangle-2.png" class="bg2">
+	<h1 class="head1">Weather</h1>
+	<img id="weather_image" class="weather_image" src="resource/sunny.svg">
+	<h2 class="desc1">What's the weather.</h2>
+	<h3 id="temp1" class="temp1">22°C</h3>
+	<p id="temp2" class="temp2">11°C</p>
+	<h2 id="weather_type" class="desc2">Partly Cloudy</h2>
+	<p class="card1"></p>
+	<p class="card2"></p>
+	<p class="card3"></p>
+	<h1 class="pressure">Pressure</h1>
+	<h2 id="pressure" class="p_num">800mb</h2>
+	<h1 class="visibility">Visibility</h1>
+	<h2 id="visibility" class="v_num">4.3 km</h2>
+	<h1 class="humidity">Humidity</h1>
+	<h2 id="humidity" class="h_num">87%</h2>
+
+	<h1 class="head2">Air Quality</h1>
+	<img class="air_q_i" src="resource/wind.svg">
+	<h2 id="w_speed" class="desc3">Speed : 0.0 km/h</h2>
+	<h2 id="w_main" class="desc5">Main pollutant : Carbon Monoxide</h2>
+	<h3 id="w_angle" class="air_q">0</h3>
+	<p id="aqi_name" class="aqi">CO</p>
+	<h2 id="w_direction" class="desc4">West Wind</h2>
+	<svg id="focus" class="focus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		width="120" height="80" viewBox="0 0 120 80">
+		<defs>
+			<filter id="Rectangle_9" x="0" y="0" width="120" height="80" filterUnits="userSpaceOnUse">
+				<feOffset dy="10" input="SourceAlpha" />
+				<feGaussianBlur stdDeviation="7.5" result="blur" />
+				<feFlood flood-opacity="0.161" />
+				<feComposite operator="in" in2="blur" />
+				<feComposite in="SourceGraphic" />
+			</filter>
+		</defs>
+		<g id="popup" transform="translate(22.5 12.5)">
+			<g transform="matrix(1, 0, 0, 1, -22.5, -12.5)" filter="url(#Rectangle_9)">
+				<rect id="Rectangle_9-2" data-name="Rectangle 9" width="75" height="35" rx="11"
+					transform="translate(22.5 12.5)" fill="#19283f" />
+			</g>
+			<path id="Polygon_1" data-name="Polygon 1"
+				d="M6.566,1.474a2,2,0,0,1,2.868,0L12.7,4.832a2,2,0,0,1-1.434,3.394H4.735A2,2,0,0,1,3.3,4.832Z"
+				transform="matrix(-1, 0.017, -0.017, -1, 46.035, 39.489)" fill="#19283f" />
+		</g>
+	</svg>
+	<p class="progress_area"></p>
+	<h2 id="good" class="good">Good</h2>
+	<h2 id="fair" class="fair">Fair</h2>
+	<h2 id="standard" class="standard">Standard</h2>
+	<h2 id="risky" class="unhealthy">Risky</h2>
+	<h2 id="hazard" class="hazard">Hazardous</h2>
+	<progress id="progress_bar" class="progress_bar" value="1" max="2"></progress>
+
+	<p id="overlay" class="overlay"></p>
+	<div id="username_box" class="username_container">
+		<input required type="text" class="username" id="username" placeholder="Enter your username">
+		<img src="resource/login.svg" id="login" class="login">
+	</div>
+
+</body>
+<script>
+	if (localStorage.getItem("location") == null){
+		localStorage.setItem("location","Bengaluru")
+	}
+	var overlayEl = document.getElementById("overlay")
+	var username_boxEl = document.getElementById("username_box")
+	var user_nameEl = document.getElementById("username")
+	var loginEl = document.getElementById("login")
+	var usernameD = document.getElementById("user_name")
+
+	if (localStorage.getItem("username") == null){
+		overlayEl.classList.toggle("active")
+		username_boxEl.classList.toggle("active")
+		loginEl.addEventListener("click", function(){
+			if (user_nameEl.value != ""){
+				localStorage.setItem("username",user_nameEl.value)
+				console.log(user_nameEl.value);
+				overlayEl.classList.remove("active")
+				username_boxEl.classList.remove("active")
+				usernameD.innerHTML = localStorage.getItem("username")
+				location.reload()
+			}
+		})
+	}
+	else {
+		usernameD.innerHTML = localStorage.getItem("username")
+	}
+
+	function generateAvatar(text, foregroundColor, backgroundColor) {
+		const canvas = document.createElement("canvas");
+		const context = canvas.getContext("2d");
+
+		canvas.width = 200;
+		canvas.height = 200;
+
+		// Draw background
+		context.fillStyle = backgroundColor;
+		context.fillRect(0, 0, canvas.width, canvas.height);
+
+		// Draw text
+		context.font = "bold 100px Poppins";
+		context.fillStyle = foregroundColor;
+		context.textAlign = "center";
+		context.textBaseline = "middle";
+		context.fillText(text, canvas.width / 2, canvas.height / 1.8);
+
+		return canvas.toDataURL("image/png");
+	}
+
+	document.getElementById("avatar").src = generateAvatar(localStorage.getItem("username")[0],"white","black")
+
+	var progressEl = document.getElementById("progress_bar");
+	var goodEl = document.getElementById("good");
+	var standardEl = document.getElementById("standard");
+	var hazardEl = document.getElementById("hazard");
+	var fairEl = document.getElementById("fair");
+	var riskyEl = document.getElementById("risky")
+	var focusEl = document.getElementById("focus")
+
+	function ProgressSet(){
+		if (progressEl.value == "1.8") {
+		focusEl.style.left = "745px";
+		hazardEl.style.display = "block";
+		goodEl.style.display = "none";
+		standardEl.style.display = "none";
+		fairEl.style.display = "none";
+		riskyEl.style.display = "none";
+		}
+		else if (progressEl.value == "1") {
+			focusEl.style.left = "618px";
+			hazardEl.style.display = "none";
+			goodEl.style.display = "none";
+			standardEl.style.display = "block";
+			fairEl.style.display = "none";
+			riskyEl.style.display = "none";
+		}
+		else if (progressEl.value == "0.25") {
+			focusEl.style.left = "500px";
+			hazardEl.style.display = "none";
+			goodEl.style.display = "block";
+			standardEl.style.display = "none";
+			fairEl.style.display = "none";
+			riskyEl.style.display = "none";
+		}
+		else if (progressEl.value == "0.55"){
+			focusEl.style.left = "550px";
+			hazardEl.style.display = "none";
+			goodEl.style.display = "none";
+			standardEl.style.display = "none";
+			fairEl.style.display = "block";
+			riskyEl.style.display = "none";
+		}
+		else if (progressEl.value == "1.35"){
+			focusEl.style.left = "680px";
+			hazardEl.style.display = "none";
+			goodEl.style.display = "none";
+			standardEl.style.display = "none";
+			fairEl.style.display = "none";
+			riskyEl.style.display = "block";
+		}
+	}
+
+	ProgressSet()
+
+	exitEl = document.getElementById("exit");
+	exitEl.addEventListener("click", function () {
+		window.close();
+	});
+
+	searchInput = document.getElementById("search_input");
+
+	if (localStorage.length != null){
+		searchInput.placeholder = localStorage.getItem("location")
+	}
+
+	searchBtn = document.getElementById("search");
+
+	tempEl1 = document.getElementById("temp1");
+	tempEl2 = document.getElementById("temp2");
+	weatherEl = document.getElementById("weather_type");
+	pressureEl = document.getElementById("pressure");
+	visibilityEl = document.getElementById("visibility");
+	humidityEl = document.getElementById("humidity");
+
+	wspeedEl = document.getElementById("w_speed");
+	wdirectionEl = document.getElementById("w_direction");
+
+	aqinameEl = document.getElementById("aqi_name");
+	wmainEl = document.getElementById("w_main");
+	wangleEl = document.getElementById("w_angle");
+
+	function findAngle(angle) {
+		
+		var direction
+		var n = angle;
+		
+		if (78.75 < n && n <= 101.25) {
+			direction = "East";
+		}
+		if (33.75 < n && n <= 56.25) {
+			direction = "NorthEast";
+		}
+		if (348.75 < n && n <= 11.25) {
+			direction = "North";
+		}
+		if (303.75 < n && n <= 348.75) {
+			direction = "NorthWest";
+		}
+		if (258.75 < n && n <= 281.25) {
+			direction = "West";
+		}
+		if (213.75 < n && n <= 236.25) {
+			direction = "SouthWest";
+		}
+		if (168.75 < n && n <= 191.25) {
+			direction = "South";
+		}
+		if (123.75 < n && n <= 146.25) {
+			direction = "SouthEast";
+		}
+		if (11.25 < n && n <= 33.75) {
+			direction = "NorthNorthEast";
+		}
+		if (56.25 < n && n <= 78.75) {
+			direction = "EastNorthEast";
+		}
+		if (101.25 < n && n <= 123.75) {
+			direction = "EastSouthEast";
+		}
+		if (146.25 < n && n <= 168.75) {
+			direction = "SouthSouthEast";
+		}
+		if (191.25 < n && n <= 213.75) {
+			direction = "SouthSouthWest";
+		}
+		if (236.25 < n && n <= 258.75) {
+			direction = "WestSouthWest";
+		}
+		if (281.25 < n && n <= 303.75) {
+			direction = "WestNorthWest";
+		}
+		if (326.25 < n && n <= 348.75) {
+			direction = "NorthNorthWest";
+		}
+		
+		return [n, direction]
+	}
+
+	function SetData(){
+		fetch("https://api.openweathermap.org/data/2.5/weather?q=" + localStorage.getItem("location") + "&units=metric&appid=b6d211f79c4cb19a9f7468d1f2af4272")
+			.then(Response => Response.json())
+			.then(data => {
+				tempEl1.innerHTML = data['main']['temp'] + "°C";
+				tempEl2.innerHTML = data['main']['feels_like'] + "°C";
+				weatherEl.innerHTML = data['weather'][0]['description'];
+				pressureEl.innerHTML = data['main']['pressure'] + "mb";
+				humidityEl.innerHTML = data['main']['humidity'] + "%";
+				visibilityEl.innerHTML = data['visibility'] / 1000 + ".0 km"
+
+				wspeedEl.innerHTML = "Speed : " + data['wind']['speed'] + ' km/h'
+				wdirectionEl.innerHTML = findAngle(data['wind']['deg'])[1]
+				fetch("http://api.openweathermap.org/data/2.5/air_pollution?lat="+data['coord']['lat']+"&lon="+data['coord']["lon"]+"&appid=b6d211f79c4cb19a9f7468d1f2af4272")
+					.then(aqi_data => aqi_data.json())
+					.then(aqi_data_1 => {
+
+						const arr_keys = Object.keys(aqi_data_1["list"]["0"]['components'])
+						const arr_keys_full = ["Carbon monoxide","Nitrogen monoxide","Nitrogrn dioxide","Ozone","Sulpher dioxide","PM 2.5 (Fine particulate matter)","PM 10 (Coarse particulate matter)","Ammonia"]
+						const arr_values = Object.values(aqi_data_1["list"]["0"]['components'])
+						const max_value = arr_values.reduce(function(a, b) {
+							return Math.max(a, b);
+						}, 0);
+						const index_max = arr_values.indexOf(max_value)
+
+						aqinameEl.innerHTML = arr_keys[index_max];
+						wmainEl.innerHTML = "Main pollutant : "+arr_keys_full[index_max]
+						wangleEl.innerHTML = Math.floor(max_value);
+						
+						if (aqi_data_1["list"]["0"]["main"]["aqi"] == 1){
+							progressEl.value = "0.25";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 2){
+							progressEl.value = "0.55";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 3){
+							progressEl.value = "1";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 4){
+							progressEl.value = "1.35";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 5){
+							progressEl.value = "1.8";
+							ProgressSet()
+						}
+					})
+			})
+	}
+
+	searchBtn.addEventListener("click", function() {
+		fetch("https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&units=metric&appid=b6d211f79c4cb19a9f7468d1f2af4272")
+			.then(Response => Response.json())
+			.then(data => {
+				tempEl1.innerHTML = data['main']['temp'] + "°C";
+				tempEl2.innerHTML = data['main']['feels_like'] + "°C";
+				weatherEl.innerHTML = data['weather'][0]['description'];
+				pressureEl.innerHTML = data['main']['pressure'] + "mb";
+				humidityEl.innerHTML = data['main']['humidity'] + "%";
+				visibilityEl.innerHTML = data['visibility'] / 1000 + ".0 km"
+
+				wspeedEl.innerHTML = "Speed : " + data['wind']['speed'] + ' km/h'
+				wdirectionEl.innerHTML = findAngle(data['wind']['deg'])[1]
+				fetch("http://api.openweathermap.org/data/2.5/air_pollution?lat="+data['coord']['lat']+"&lon="+data['coord']["lon"]+"&appid=b6d211f79c4cb19a9f7468d1f2af4272")
+					.then(aqi_data => aqi_data.json())
+					.then(aqi_data_1 => {
+
+						const arr_keys = Object.keys(aqi_data_1["list"]["0"]['components'])
+						const arr_keys_full = ["Carbon monoxide","Nitrogen monoxide","Nitrogrn dioxide","Ozone","Sulpher dioxide","PM 2.5 (Fine particulate matter)","PM 10 (Coarse particulate matter)","Ammonia"]
+						const arr_values = Object.values(aqi_data_1["list"]["0"]['components'])
+						const max_value = arr_values.reduce(function(a, b) {
+							return Math.max(a, b);
+						}, 0);
+						const index_max = arr_values.indexOf(max_value)
+
+						aqinameEl.innerHTML = arr_keys[index_max];
+						wmainEl.innerHTML = "Main pollutant : "+arr_keys_full[index_max]
+						wangleEl.innerHTML = Math.floor(max_value);
+						
+						if (aqi_data_1["list"]["0"]["main"]["aqi"] == 1){
+							progressEl.value = "0.25";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 2){
+							progressEl.value = "0.55";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 3){
+							progressEl.value = "1";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 4){
+							progressEl.value = "1.35";
+							ProgressSet()
+						}
+						else if (aqi_data_1["list"]["0"]["main"]["aqi"] == 5){
+							progressEl.value = "1.8";
+							ProgressSet()
+						}
+					})
+			})
+		localStorage.setItem("location",searchInput.value);
+		searchInput.placeholder = searchInput.value;
+		searchInput.value = ""
+	})
+	
+	SetData()
+
+</script>
+
+</html>

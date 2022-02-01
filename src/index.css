@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body{
+  margin: none;
+  padding: none;
+  text-decoration: none;
+  font-family: "Poppins";
+}
+
+.user_image{
+	position: absolute;
+	top: 50px;
+	left: 42px;
+	height: 60px;
+	border-radius: 100%;
+}
+
+.hello{
+	position: absolute;
+	top: 17px;
+	left: 115px;
+	font-size: 29px;
+	font-weight: 400;
+	color: #19283F;
+}
+
+.name{
+	position: absolute;
+	top: 51px;
+	left: 115px;
+	font-size: 28px;
+	font-weight: 500;
+	color: #19283F;
+}
+
+.search{
+	position: absolute;
+	border: none;
+	outline: none;
+	background-color: #F5F5F5;
+	padding: 14px 46px 14px 20px;
+	border-radius: 15px;
+	font-family: "Poppins";
+	color: #19283F;
+	font-weight: 500;
+	font-size: 12px;
+	top: 50px;
+	left: 564px;
+	width: 220px;
+}
+
+input[type = "text"]::placeholder{
+	font-family: "Poppins";
+	color: #19283F;
+	font-weight: 500;
+	font-size: 12px;
+}
+
+.search_icon{
+	position: absolute;
+	z-index: 1;
+	top: 64px;
+	left: 815px;
+	transition: all ease-in-out 0.2s;
+	cursor: pointer;
+} 
+
+.bg1{
+	position: absolute;
+	top: 153px;
+	left: 40px;
+}
+
+.bg2{
+	position: absolute;
+	top: 153px;
+	left: 474px;
+}
+
+.draggable{
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-app-region: drag;
+	cursor: move;
+}
+
+.head1{
+	position: absolute;
+	top: 172px;
+	left: 118px;
+	color: #FFFFFD;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.weather_image{
+	position: absolute;
+	top: 191px;
+	left: 72px;
+	z-index: 3;
+}
+
+.desc1{
+	position: absolute;
+	top: 201px;
+	left: 118px;
+	color: #FFFFFD;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.temp1{
+	position: absolute;
+	top: 220px;
+	left: 68px;
+	font-weight: 600;
+	font-size: 39px;
+	color: #18283F;
+}
+
+.temp2{
+	position: absolute;
+	font-weight: 500;
+	font-size: 12px;
+	color: #000000;
+	padding: 4px 8px 5px 9px;
+	background-color: white;
+	border-radius: 9px;
+	top: 330px;
+	left: 70px;
+}
+
+.desc2{
+	position: absolute;
+	font-size: 13px;
+	top: 307px;
+	left: 69px;
+	font-weight: 500;
+}
+
+.card1{
+	position: absolute;
+	border-radius: 20px;
+	top: 364px;
+	left: 68px;
+	background-color: #19283F;
+	width: 110px;
+	height: 83px;
+}
+
+.card2{
+	position: absolute;
+	border-radius: 20px;
+	top: 364px;
+	left: 193px;
+	background-color: #CCE16A;
+	width: 110px;
+	height: 83px;
+}
+
+.card3{
+	position: absolute;
+	border-radius: 20px;
+	top: 364px;
+	left: 316px;
+	background-color: white;
+	width: 110px;
+	height: 83px;
+}
+
+.pressure,.visibility,.humidity{
+	position: absolute;
+	font-size: 12px;
+	font-weight: 400;
+	top: 388px;
+}
+
+.pressure{
+	left: 97px;
+	color: #FFFFFF;
+}
+
+.visibility{
+	color: #010101;
+	left: 223px;
+}
+
+.humidity{
+	color: #000000;
+	left: 344px;
+}
+
+.p_num,.v_num,.h_num{
+	position: absolute;
+	font-size: 18px;
+	font-weight: 500;
+	top: 405px;
+}
+
+.p_num{
+	color: #FFFFFF;
+	left: 90px;
+}
+
+.v_num{
+	color: #010101;
+	left: 217px;
+}
+
+.h_num{
+	color: black;
+	left: 353px;
+}
+
+.head2{
+	position: absolute;
+	font-weight: 500;
+	font-size: 15px;
+	color: #19283F;
+	left: 552px;
+	top: 172px;
+}
+
+.search_icon:hover{
+	transform: scale(105%);
+}
+
+.search_icon:active{
+	transform: scale(100%);
+}
+
+.air_q_i{
+	position: absolute;
+	top: 191px;
+	left: 508px;
+}
+
+.exit{
+	position: absolute;
+	top: 62px;
+	left: 865px;
+	transition: all ease-in-out 0.2s;
+	cursor: pointer;
+}
+
+.exit:hover{
+	transform: scale(105%);
+}
+
+.exit:active{
+	transform: scale(100%);
+}
+
+.overlay{
+	position: absolute;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.7);
+	width: 938px;
+	height: 540px;
+	margin: none;
+	left: -8px;
+	border-radius: 0 0 20px 20px;
+	display: none;
+}
+
+.overlay.active{
+	display: block;
+}
+
+.login{
+	transition: all ease-in-out 0.2s;
+	cursor: pointer;
+	padding-left: 40px;
+	width: 24px;
+	transition: all 0.5s ease-in-out;
+}
+
+.login:hover{
+	transform: scale(105%);
+}
+
+.login:active{
+	transform: scale(100%);
+}
+
+.username_container{
+	position: absolute;
+	top: 225px;
+	left: 230px;
+	width: 400px;
+	height: 100px;
+	background-color: white;
+	z-index: 11;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	padding-left: 40px;
+	transform: scale(0);
+	transition: all 0.5s ease-in-out;
+}
+
+.username_container.active{
+	transition: all 0.5s ease-in-out;
+	transform: scale(1);
+}
+
+.username{
+	border: none;
+	outline: none;
+	background-color: #F5F5F5;
+	padding: 14px 46px 14px 20px;
+	border-radius: 15px;
+	font-family: "Poppins";
+	color: #19283F;
+	font-weight: 500;
+	font-size: 12px;
+	top: 50px;
+	left: 564px;
+	width: 220px;
+	height: 20px;
+	transition: all 0.5s ease-in-out;
+}
+
+input[type = "text"]::placeholder{
+	font-family: "Poppins";
+	color: #19283F;
+	font-weight: 500;
+	font-size: 12px;
+}
+
+.desc3{
+	position: absolute;
+	font-size: 12px;
+	font-weight: 400;
+	color: #19283F;
+	top: 201px;
+	left: 552px;
+}
+
+.desc5{
+	position: absolute;
+	font-size: 12px;
+	font-weight: 400;
+	color: #19283F;
+	top: 230px;
+	left: 500px;
+	padding: 2px 5px 2px 5px;
+	background-color: white;
+	border-radius: 5px;
+}
+
+.air_q{
+	position: absolute;
+	font-size: 40px;
+	font-weight: 600;
+	color: #FFFFFD;
+	top: 220px;
+	left: 499px;
+}
+
+.aqi{
+	position: absolute;
+	padding: 3px 9px 3px 10px;
+	background-color: #CCE169;
+	color: #010101;
+	border-radius: 10px;
+	top: 259px;
+	left: 585px;
+}
+
+.desc4{
+	position: absolute;
+	top: 307px;
+	left: 504px;
+	font-weight: 400;
+	font-size: 13px;
+	color: #FFFFFD;
+}
+
+.focus{
+	position: absolute;
+	top: 380px;
+	left: 745px;
+	z-index: 1;
+	transition: all ease-in-out .5s;
+}
+
+.progress_area{
+	position: absolute;
+	border-radius: 20px;
+	width: 357px;
+	height: 83px;
+	top: 364px;
+	left: 503px;
+	background-color: white;
+}
+
+.good,.standard,.hazard,.fair,.unhealthy{
+	z-index: 10;
+	position: absolute;
+	top: 390px;
+	font-size: 12px;
+	font-weight: 400;
+	color: white;
+	transition: all ease-in-out .5s;
+}
+
+.good{
+	left: 545px;
+}
+
+.fair{
+	color: white;
+	left: 600px;
+}
+
+.unhealthy{
+	left: 725px;
+	color: white;
+}
+
+.standard{
+	left: 650px;
+}
+
+.hazard{
+	left: 773px;
+}
+
+.progress_bar{
+	z-index: 2;
+	position: absolute;
+	top: 438px;
+	width: 318px;
+	height: 7px;
+	background-color: transparent;
+	border-radius: 3px;
+	left: 523px;
+}
+
+.progress_bar::-webkit-progress-bar {
+	background-color: #D8DAE6;
+	border-radius: 3px;
+	border: 1px solid #D8DAE6;
+  }
+
+.progress_bar::-webkit-progress-value {
+	height: 5px;
+	background-color: #F87E29;
+	border-radius: 4px;
+}
