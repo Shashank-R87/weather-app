@@ -119,11 +119,9 @@
 		canvas.width = 200;
 		canvas.height = 200;
 
-		// Draw background
 		context.fillStyle = backgroundColor;
 		context.fillRect(0, 0, canvas.width, canvas.height);
 
-		// Draw text
 		context.font = "bold 100px Poppins";
 		context.fillStyle = foregroundColor;
 		context.textAlign = "center";
@@ -142,6 +140,7 @@
 	var fairEl = document.getElementById("fair");
 	var riskyEl = document.getElementById("risky")
 	var focusEl = document.getElementById("focus")
+	var weatherimgEl = document.getElementById("weather_image");
 
 	function ProgressSet(){
 		if (progressEl.value == "1.8") {
@@ -276,12 +275,17 @@
 		fetch("https://api.openweathermap.org/data/2.5/weather?q=" + localStorage.getItem("location") + "&units=metric&appid=b6d211f79c4cb19a9f7468d1f2af4272")
 			.then(Response => Response.json())
 			.then(data => {
+				console.log(data);
 				tempEl1.innerHTML = data['main']['temp'] + "°C";
 				tempEl2.innerHTML = data['main']['feels_like'] + "°C";
 				weatherEl.innerHTML = data['weather'][0]['description'];
 				pressureEl.innerHTML = data['main']['pressure'] + "mb";
 				humidityEl.innerHTML = data['main']['humidity'] + "%";
 				visibilityEl.innerHTML = data['visibility'] / 1000 + ".0 km"
+				weatherimgEl.src = `https://openweathermap.org/img/wn/${data['weather']['0']['icon']}@2x.png`;
+				weatherimgEl.style.transform = "scale(50%)";
+				weatherimgEl.style.left = "40px";
+				weatherimgEl.style.top = "160px";
 
 				wspeedEl.innerHTML = "Speed : " + data['wind']['speed'] + ' km/h'
 				wdirectionEl.innerHTML = findAngle(data['wind']['deg'])[1]
@@ -335,6 +339,10 @@
 				pressureEl.innerHTML = data['main']['pressure'] + "mb";
 				humidityEl.innerHTML = data['main']['humidity'] + "%";
 				visibilityEl.innerHTML = data['visibility'] / 1000 + ".0 km"
+				weatherimgEl.src = `https://openweathermap.org/img/wn/${data['weather']['0']['icon']}@2x.png`;
+				weatherimgEl.style.transform = "scale(50%)";
+				weatherimgEl.style.left = "40px";
+				weatherimgEl.style.top = "160px";
 
 				wspeedEl.innerHTML = "Speed : " + data['wind']['speed'] + ' km/h'
 				wdirectionEl.innerHTML = findAngle(data['wind']['deg'])[1]
@@ -379,6 +387,7 @@
 		localStorage.setItem("location",searchInput.value);
 		searchInput.placeholder = searchInput.value;
 		searchInput.value = ""
+		location.reload();
 	})
 	
 	SetData()
