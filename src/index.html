@@ -23,10 +23,10 @@
 			stroke-linecap="round" stroke-width="2" />
 	</svg>
 	<img src="resource/exit.svg" class="exit" id="exit">
-	<img src="./resource/Rectangle-1.png" class="bg1">
+	<img id = "bg1" src="./resource/Rectangle-1.png" class="bg1">
 	<img src="./resource/Rectangle-2.png" class="bg2">
 	<h1 class="head1">Weather</h1>
-	<img id="weather_image" class="weather_image" src="resource/sunny.svg">
+	<img id="weather_image" class="weather_image" src="">
 	<h2 class="desc1">What's the weather.</h2>
 	<h3 id="temp1" class="temp1">22°C</h3>
 	<p id="temp2" class="temp2">11°C</p>
@@ -141,6 +141,7 @@
 	var riskyEl = document.getElementById("risky")
 	var focusEl = document.getElementById("focus")
 	var weatherimgEl = document.getElementById("weather_image");
+	var weatherbgEl = document.getElementById("bg1");
 
 	function ProgressSet(){
 		if (progressEl.value == "1.8") {
@@ -286,6 +287,63 @@
 				weatherimgEl.style.transform = "scale(50%)";
 				weatherimgEl.style.left = "40px";
 				weatherimgEl.style.top = "160px";
+
+				if (data["weather"][0]["icon"]=="01d"){
+					weatherbgEl.src = "resource/weather-bg/clear-sky.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="01n"){
+					weatherbgEl.src = "resource/weather-bg/clear-sky-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="02d"){
+					weatherbgEl.src = "resource/weather-bg/few-clouds.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="02n"){
+					weatherbgEl.src = "resource/weather-bg/few-clouds-n.jpg"
+					tempEl1.style.color = "#aaa";
+					weatherEl.style.color = "#aaa";
+				}
+				else if (data["weather"][0]["icon"]=="03d"){
+					weatherbgEl.src = "resource/weather-bg/scattered-clouds.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="03n"){
+					weatherbgEl.src = "resource/weather-bg/scattered-clouds-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="04d"){
+					weatherbgEl.src = "resource/weather-bg/broken-clouds.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="04n"){
+					weatherbgEl.src = "resource/weather-bg/broken-clouds-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="09d"){
+					weatherbgEl.src = "resource/weather-bg/shower-rain.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="09n"){
+					weatherbgEl.src = "resource/weather-bg/shower-rain-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="10d"){
+					weatherbgEl.src = "resource/weather-bg/rain.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="10d"){
+					weatherbgEl.src = "resource/weather-bg/rain-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="11d"){
+					weatherbgEl.src = "resource/weather-bg/thunderstorm.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="11n"){
+					weatherbgEl.src = "resource/weather-bg/thunderstorm-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="13d"){
+					weatherbgEl.src = "resource/weather-bg/snow.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="13n"){
+					weatherbgEl.src = "resource/weather-bg/snow-n.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="50d"){
+					weatherbgEl.src = "resource/weather-bg/mist.jpg"
+				}
+				else if (data["weather"][0]["icon"]=="50n"){
+					weatherbgEl.src = "resource/weather-bg/mist-n.jpg"
+				}
 
 				wspeedEl.innerHTML = "Speed : " + data['wind']['speed'] + ' km/h'
 				wdirectionEl.innerHTML = findAngle(data['wind']['deg'])[1]
